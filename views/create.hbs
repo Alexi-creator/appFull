@@ -1,0 +1,28 @@
+{{!-- Описываем шаблон для страницы /create --}}
+
+{{!-- создаем форму для отправки данных в БД для сервера 
+мы описали что нужно делать при /create POST в todos.js --}}
+<form action="/create" method="POST"> 
+  <h2>Create toDo</h2>
+  
+  <div class="input-filed">
+    {{!-- name="title" по данному полю будем брать введеное значение (на сервере) --}}
+    <input type="text" name="title"> 
+    <label>Todo title</label>
+  </div>
+  <button type="submit" class="btn">Create</button>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

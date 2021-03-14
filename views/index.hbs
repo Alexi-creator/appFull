@@ -1,0 +1,46 @@
+{{!-- этот кусок мы отдаем в router.get('/create'... 
+в шаблонизаторе все что ниже попадет в {{{ body }}} в main.hbs --}}
+
+<h2>Todos page</h2>
+
+{{!-- принимаем параметр из todos.js --}}
+{{#if todos.length}}
+{{!-- если todos не пустой то итерируем массив в ul --}}
+<ul>
+  {{#each todos}}
+    <li class="todo">
+      {{!-- форма для каждого input в li для отправки на сервер данных --}}
+      <form action="/complete" method="POST">
+        <label>
+          {{!-- completed это ключ у объекта todos.completed из схемы модели --}}
+          {{!-- в каждом цикле проверяем что находиться в completed (true или false) --}}
+          {{!-- если true то выводим..: --}}
+          {{#if completed}}
+            <input type="checkbox" checked name="completed">
+            {{!-- title это ключ у объекта todos.title из схемы модели --}}
+            <span class="completed">{{title}}</span> 
+          {{else}}
+            <input type="checkbox" name="completed">
+            {{!-- title это ключ у объекта todos.title из схемы модели --}}
+            <span>{{title}}</span> 
+          {{/if}}
+
+          {{!-- для кадого пункта нашего li сделаем скрытый input в котором
+          значение будет приходить из БД _id так мы сможем определить 
+          по какому li(его id) нажали отправить данные --}}
+          <input type="hidden" value="{{_id}}" name="id">
+
+          <button class="btn btn-small" type="submit">Save</button>
+        </label>
+      </form>
+    </li>
+  {{/each}}
+</ul>
+{{else}}
+{{!-- если todos пустой то выводим параграф --}}
+<p>No Todos</p>
+{{/if}}
+
+
+
+

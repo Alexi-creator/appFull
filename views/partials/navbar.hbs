@@ -1,0 +1,25 @@
+<nav class="blue darkern-4">
+  <div class="nav-wrapper">
+    <a href="/" class="brand-logo">Todos</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      
+      {{!-- условие на переданный аргумент из todos.js для определения
+      какая стрнаица открыта, чтобы подсветить нужную ссылку в меню --}}
+      {{#if isIndex}}
+      {{!-- если передан isIndex то выводим li c active --}}
+      <li class="active"><a href="/">Todos</a></li>
+      {{else}}
+      {{!-- иначе выводим li без active --}}
+      <li><a href="/">Todos</a></li>
+      {{/if}}
+
+      {{!-- тоже самое для другой ссылки --}}
+      {{#if isCreate}}
+      <li class="active"><a href="/create">Create</a></li>
+      {{else}}
+      <li><a href="/create">Create</a></li>
+      {{/if}}
+
+    </ul>
+  </div>
+</nav>
